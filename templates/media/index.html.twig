@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+  {# filtres #}
+  <form>
+
+    <select name="type">
+      <option value="0">Choisir un type</option>
+      {% for key in type|keys %}
+        <option value="{{type[key]}}">{{key}}</option>
+      {% endfor %}
+    </select>
+    <button>Filtrer</button>
+  </form>
+
+  <table>
+    {% for media in medias %}
+    <tr>
+      <td>{{media.title}}</td>
+      <td>{{media.author}}</td>
+      <td>Niveau {{media.type}}</td>
+      <td>
+      {{  media | length  }}
+       réponse(s) enregistrée(s)
+    </td>
+      
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}
